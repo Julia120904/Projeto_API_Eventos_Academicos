@@ -119,6 +119,23 @@ O cadastro público em `/auth/registrar` cria somente usuários com perfil `part
 - Emitir certificados: organizador ou administrador.
 
 As consultas públicas de eventos e categorias foram mantidas para preservar a descoberta de eventos. Consultas de usuários, inscrições e certificados exigem autenticação e respeitam o perfil do usuário. Rotas que alteram dados sensíveis também exigem autenticação e, quando aplicável, perfil autorizado.
+### Matriz de permissões
+
+| Operação | Administrador | Organizador | Participante |
+|---|---|---|---|
+| Gerenciar usuários | Permitido | Negado | Negado |
+| Criar, editar e excluir categorias | Permitido | Negado | Negado |
+| Criar eventos | Permitido | Permitido | Negado |
+| Editar ou excluir evento próprio | Permitido | Permitido | Negado |
+| Editar ou excluir evento de outro organizador | Permitido | Negado | Negado |
+| Realizar inscrição | Permitido | Negado | Permitido, somente em nome próprio |
+| Cancelar inscrição | Permitido | Negado | Permitido, somente a própria |
+| Consultar todas as inscrições | Permitido | Permitido | Negado |
+| Consultar inscrição individual | Permitido | Permitido | Permitido, somente a própria |
+| Emitir certificados | Permitido | Permitido | Negado |
+| Consultar eventos e categorias | Permitido | Permitido | Permitido |
+
+**Observação:** operações administrativas exigem autenticação e perfil autorizado. O acesso a recursos individuais também respeita a propriedade do recurso, quando aplicável.
 
 ## 7. Códigos de resposta de segurança
 
